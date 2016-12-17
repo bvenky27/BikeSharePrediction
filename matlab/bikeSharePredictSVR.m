@@ -15,4 +15,4 @@ for i = 1:size(labels_test)
     end
 end
 
-accuracy = (accuracySVR/size(labels_test,1))*100
+accuracySVR = (accuracySVR/size(labels_test,1))*100;

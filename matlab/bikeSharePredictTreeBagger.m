@@ -15,4 +15,4 @@ for NT = 1:size(NTress_values, 2)
     accuraciesTB(NT) = 100*accuracyTB/size(labels_test, 1);
 end
 
-plot(NTress_values, accuraciesTB); % highest at 
+plot(NTress_values, accuraciesTB); % highest at 182 with accuracy of ~80%

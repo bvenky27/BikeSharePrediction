@@ -1,4 +1,4 @@
-% Code for implementation of ensemble using fitctree
+% Code for implementation of ensemble random forest using fitctree
 
 load 'bikeShareData.mat';
 
@@ -12,9 +12,7 @@ models = cell(m, 1);
 for k = 1:m
     subspace_train = datasample(train_all, n);
     labels_test_pca = subspace_train(:, 13);
-    coeff = pca(subspace_train(:, 1:12), 'NumComponents', 3);
-    subspace_train = subspace_train(:, 1:12) * coeff;
-    Coeffs{k} = coeff;
+    subspace_train = subspace_train(:, 1:12);
     model = fitctree(subspace_train, labels_test_pca);
     % Comment above line and Uncomment below to run fitctree with optimized
     % parameters - takes approximately 2 hours to run and produces accuracy
@@ -27,8 +25,7 @@ y = zeros(size(labels_test, 2), 1);
 for t = 1:size(labels_test, 1)
     y_model = zeros(m, 1);
     for k = 1:m
-        bikes_test_pca = bikes_test*Coeffs{k};
-        y_model(k, 1) = predict(models{k}, bikes_test_pca(t, :));
+        y_model(k, 1) = predict(models{k}, bikes_test(t, :));
     end
     y(t, 1) = mode(y_model);
     if y(t, 1) == labels_test(t)

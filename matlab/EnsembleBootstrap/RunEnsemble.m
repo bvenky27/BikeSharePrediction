@@ -11,7 +11,11 @@ train_all = [bikes_train labels_train];
 models = cell(m, 1);
 for k = 1:m
     subspace_train = datasample(train_all, n);
-    model = fitctree(subspace_train(:, 1:12), subspace_train(:, 13), 'OptimizeHyperParameters', 'auto');
+    model = fitctree(subspace_train(:, 1:12), subspace_train(:, 13));
+    % Comment above line and Uncomment below to run fitctree with optimized
+    % parameters - takes approximately 2 hours to run and produces accuracy
+    % of 81.6
+    %model = fitctree(subspace_train(:, 1:12), subspace_train(:, 13), 'OptimizeHyperParameters', 'auto');
     models{k} = model;
 end
 accuracy = 0;
@@ -27,4 +31,6 @@ for t = 1:size(labels_test, 1)
     end
 end
 
-accuracy = 100*accuracy/size(labels_test, 1);
+% Accuracy without Optimizing hyper parameters - 79.5%
+% Accuracy with Optimizing hyper parameters - 81.6%
+accuracy = 100*accuracy/size(labels_test, 1); 

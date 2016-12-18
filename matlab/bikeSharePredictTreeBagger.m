@@ -1,6 +1,6 @@
 load 'bikeShareData.mat'
 
-NTress_values = [1:200];
+NTress_values = [1:100];
 accuraciesTB = zeros(size(NTress_values, 2), 1);
 for NT = 1:size(NTress_values, 2)
     B = TreeBagger(NTress_values(NT),bikes_train,labels_train, 'Method', 'classification');

@@ -1,6 +1,6 @@
 load 'bikeShareData.mat';
 
-NTress_values = [20];
+NTress_values = [10];
 sample_Values = [3:12];
 accuraciesTB = zeros(size(sample_Values, 2), 1);
 for samp = 1:size(sample_Values, 2)

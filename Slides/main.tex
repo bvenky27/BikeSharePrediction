@@ -21,11 +21,11 @@ UMBC - CSEE\\
     \maketitle
 
 \begin{abstract}
-    The purpose of this project is to develop a model which will predict the approximate number of bikes rented on a particular day or hour based on the Capital Bike share data. The predictions are made by combining the bike share data with daily weather data and holiday data of Washington DC. The models that are used for prediction is evaluated based on the accuracy of the predictions. Various models are evaluated such as Random Forest model, Bootstrap Aggregation, Conditional Decision Trees(C-trees), K-Nearest Neighbors (KNN), Support Vector Machines (SVM) for classification. From our observations, the best model for this bike share data is Random Decision Forest model on decision trees which is one of the ensemble learning methods for classification. The accuracy of this model is approximately 80\%.
+    The purpose of this project is to develop a model which will predict the approximate number of bikes rented on a particular day or hour based on the Capital Bike share data. The predictions are made by combining the bike share data with daily weather data and holiday data of Washington DC. The models that are used for prediction is evaluated based on the accuracy of the predictions. Various models are evaluated such as Random Forest model, Rotation Forest, Bootstrap Aggregation, Conditional Decision Trees(C-trees), K-Nearest Neighbors (KNN), Support Vector Machines (SVM) for classification. From our observations, the best model for this bike share data is Random Decision Forest model on decision trees which is one of the ensemble learning methods for classification. The accuracy of this model is approximately 80\%.
 \end{abstract}
 \setlength{\parindent}{7ex}
 \section{Introduction}
-    Bicycle sharing system started to grow in the year 1996 at Wisconsin, North America where red painted bikes are used for public service primarily students. In 2010, capital bike share started the bike share service in the area of Washington DC which is open to public. Heavy traffic in the capital areas and the demand for environment-friendly transport promoted the use of the bike share more frequently. The number of bikes that are rented are gradually increasing year by year. The usage of bikes depends primarily on weather and whether its a holiday or not.\\
+    Bicycle sharing system\textsuperscript{\cite{bikesharewiki}} started to grow in the year 1996 at Wisconsin, North America where red painted bikes are used for public service primarily students. In 2010, capital bike share started the bike share service in the area of Washington DC which is open to public. Heavy traffic in the capital areas and the demand for environment-friendly transport promoted the use of the bike share more frequently. The number of bikes that are rented are gradually increasing year by year. The usage of bikes depends primarily on weather and whether its a holiday or not.\\
     \indent The bike rental frequency is the number of bikes that are rented for a given hour. The elements/conditions of the weather that can be considered in deciding whether the bikes will be rented or not are :
     \begin{itemize}
     \item rain
@@ -150,44 +150,48 @@ The data is split as training and test data based on the algorithm and the forma
 \indent For the models which require a split of data, we used random sampling and split the data as 40000 train samples and 6936 test samples which is equivalent to 85\% train data and 15\% test data.
 
 \section{Related Work}
-There is a significant amount of related work in Kaggle but for the subset of the data i.e., the data of the years 2011-2012 and for the different weather parameters. The models that are applied are in vast number and have no correlation between them. The models and kernels that are developed for this data doesn't address the reason behind applying that model and why the accuracy varies with the applied method and the parameters that drastically effect the models in detail. \\
+There is a significant amount of related work in Kaggle\textsuperscript{\cite{kaggle}} but for the subset of the data i.e., the data of the years 2011-2012 and for the different weather parameters. The models that are applied are in vast number and have no correlation between them. The models and kernels that are developed for this data doesn't address the reason behind applying that model and why the accuracy varies with the applied method and the parameters that drastically effect the models in detail. \\
 \indent Our method of approach is different because the entire data set is constructed and the features are considered based on actual parameters that effect the bike rental frequency. As far as our knowledge is concerned, the best work done on this data so far is using Poisson's Regression\textsuperscript{\cite{relatedworkpoisson}}. Another paper\textsuperscript{\cite{relatedworkmultiple}} describes the models and the approaches that can be used in predicting the bike rental frequency but in a theoretical way. It compares the performance of Generalized Linear Models with Elastic Net Regularization (GLMNet), Generalized Boosted Models (GBM), Principal Component Regression (PCR), Support Vector Regression (SVR) and a kind of ensemble learning method called Stacking.
 
 \section{Methods Used}
-Considering all the models that are suitable for classification, we used a number of methods that can be trained for classification. The best algorithm is evaluated by getting the accuracy and implemented from scratch in Matlab to observe the importance of the parameters and if anyone of the default assumptions can be overridden for a better performance. The Classifier app of Matlab and Math \& Stats model module in Matlab are used to calculate the accuracy of the predictions for all the above mentioned models. The methods varies from basic methods for classification to benchmark models. Following are some of such important methods:
+Considering all the models that are suitable for classification, we used a number of methods that can be trained for classification. The best algorithm is evaluated by getting the accuracy and implemented from scratch in Matlab to observe the importance of the parameters and if anyone of the default assumptions can be overridden for a better performance. The Classifier app\textsuperscript{\cite{classifier}} of Matlab and Math \& Stats model module in Matlab are used to calculate the accuracy of the predictions for all the above mentioned models. The methods varies from basic methods for classification to benchmark models. Following are some of such important methods:
 \begin{itemize}
-\item K-Nearest Neighbors (KNN)
-\item Support Vector Machines (SVM)
-\item Support Vector Regression
-\item Discriminant (Linear and quadratic)
-\item Classification Tree
-\item Ensemble Boosted Trees
-\item Ensemble Bagged Trees (Bootstrap Aggregation)
-\item Random Forest on Ensemble bagging trees
+\item K-Nearest Neighbors (KNN) \textsuperscript{\cite{KNN}}
+\item Support Vector Machines (SVM)\textsuperscript{\cite{libSVM}}
+\item Support Vector Regression \textsuperscript{\cite{SVR}}
+\item Discriminant (Linear and quadratic)\textsuperscript{\cite{lda}}
+\item Classification Tree\textsuperscript{\cite{ctree}}
+\item Ensemble Boosted Trees\textsuperscript{\cite{BoostedTrees}}
+\item Ensemble Bagged Trees (Bootstrap Aggregation)\textsuperscript{\cite{bootstrapAggregation}}
+\item Random Forest on Ensemble bagging trees\textsuperscript{\cite{randomForest}}
+\item Rotation Forest\textsuperscript{\cite{rotationForest}} (New ensemble method)
 \item Other models which are variants of the above mentioned models
 \end{itemize}
 
 \indent The algorithms that performed better than all other methods are \textit{Ensemble Bagged Trees (Bootstrap Aggregation)} and it's variation \textit{Random Forest on Ensemble bagging trees} with an average accuracy of 80\%.
 \subsection{K-Nearest Neighbors (KNN)}
-The K-Nearest neighbors is best suited for classification mostly when dataset is too large, number of features is small and if the distance metric is good. KNN is considered inefficient in some cases as it consumes a lot of space sometimes reaching O(n\textsuperscript{d}). Variations of the KNN are verified and evaluated including Fine KNN, Medium KNN, Coarse KNN, Cosine KNN, Weighted KNN. 
+The K-Nearest neighbors\textsuperscript{\cite{KNN}} is best suited for classification mostly when dataset is too large, number of features is small and if the distance metric is good. KNN is considered inefficient in some cases as it consumes a lot of space sometimes reaching O(n\textsuperscript{d}). Variations of the KNN are verified and evaluated including Fine KNN, Medium KNN, Coarse KNN, Cosine KNN, Weighted KNN. 
 \subsection{Support Vector Machines (SVM)}
-Support Vector Machine models for classification are best suited for binary classification. The SVM provided by the Math \& Statistical module in Matlab doesn't contain multi-class classification. Thus we used libsvm module which supports multi-class classification. In case of SVM models, the hyperparameters and regularizer have to be tuned to find the best match for any data set which is very challenging. The core functionality of SVM depends upon what kernel is being used and it is also challenging to pick the right kernel method. Since it also takes a lot of time to train the data and requires small amount of data samples and large amount of features to achieve better performance, SVM is almost unfit for this data set.
+Support Vector Machine models\textsuperscript{\cite{SVM}} for classification are best suited for binary classification. The SVM provided by the Math \& Statistical module in Matlab doesn't contain multi-class classification. Thus we used libsvm module\textsuperscript{\cite{libSVM}} which supports multi-class classification. In case of SVM models, the hyperparameters and regularizer have to be tuned to find the best match for any data set which is very challenging. The core functionality of SVM depends upon what kernel is being used and it is also challenging to pick the right kernel method. Since it also takes a lot of time to train the data and requires small amount of data samples and large amount of features to achieve better performance, SVM is almost unfit for this data set.
 \subsection{Support Vector Regression}
-Support Vector Machines used for Regression are efficient only when the input data follows a pattern and thus establishes high correlation between the data samples. But SVR is highly insensitive to errors which makes this considerable, but the factors effecting the performance are the same as of SVM.
+Support Vector Machines\textsuperscript{\cite{SVR}} used for Regression are efficient only when the input data follows a pattern and thus establishes high correlation between the data samples. But SVR is highly insensitive to errors which makes this considerable, but the factors effecting the performance are the same as of SVM.
 \subsection{Discriminant (Linear and quadratic)}
-Linear and Quadratic discriminant analysis are best suitable only if the number of features are very large when compared to number of data samples. LDA requires an assumption of equal variance and co-variance matrices of the classes. The quadratic discriminant analysis comes somewhere in between the linear discriminant analysis and 1-NN (KNN with \textit{k}=1) and can be considered as a variant of LDA where heterogeneity of classes' co-variance matrices are accepted.
+Linear and Quadratic discriminant analysis\textsuperscript{\cite{lda}} are best suitable only if the number of features are very large when compared to number of data samples. LDA requires an assumption of equal variance and co-variance matrices of the classes. The quadratic discriminant analysis comes somewhere in between the linear discriminant analysis and 1-NN (KNN with \textit{k}=1) and can be considered as a variant of LDA where heterogeneity of classes' co-variance matrices are accepted.
 \subsection{Classification Tree}
-The classification trees or decision trees can be used to predict the class by selecting the most feature and evaluating the score for all the next features and choosing the next best optimal feature to make the split. The classification trees may overfit the data can also get struck in the local minima. Thus, ensemble methods are used which are described in the below sections.
+The classification trees\textsuperscript{\cite{ctree}} or decision trees can be used to predict the class by selecting the most feature and evaluating the score for all the next features and choosing the next best optimal feature to make the split. The classification trees may overfit the data can also get struck in the local minima. Thus, ensemble methods are used which are described in the below sections.
 \subsection{Ensemble Boosted Trees}
-Boosting is a method of decision also called as weak learning where the decision trees are also called as shallow trees since the level of trees is very less and the trees are often called as decision stumps. Boosting reduces bias of a large number of small models with low variance. However, Boosted trees are very sensitive to noise and outliers, and are very prone to overfitting.
+Boosting\textsuperscript{\cite{BoostedTrees}} is a method of decision also called as weak learning where the decision trees are also called as shallow trees since the level of trees is very less and the trees are often called as decision stumps. Boosting reduces bias of a large number of small models with low variance. However, Boosted trees are very sensitive to noise and outliers, and are very prone to overfitting.
 
 \subsection{Ensemble Bagged Trees (Bootstrap Aggregation)}
-Bootstrap Aggregation or Bagging is a method of reducing the variance for high variance algorithms such as decision trees, Classification and Regression trees(CART). Bagging is a method where multiple models are created from the existing dataset by created sub-sample space. The models are trained and the average/ mode of all the predicted values is considered as the final predicted value. Bagging does not give importance to the individual underlying algorithms overfitting the training data. This is one of the best examples of Ensemble learning method. An ensemble learning method is defined as a learning model which collects and combines predictions from multiple machine learning models and combines the output to make more accurate predictions than the individual models. \\
+Bootstrap Aggregation\textsuperscript{\cite{bootstrapAggregation}} or Bagging is a method of reducing the variance for high variance algorithms such as decision trees, Classification and Regression trees(CART). Bagging is a method where multiple models are created from the existing dataset by created sub-sample space. The models are trained and the average/ mode of all the predicted values is considered as the final predicted value. Bagging does not give importance to the individual underlying algorithms overfitting the training data. This is one of the best examples of Ensemble learning method. An ensemble learning method is defined as a learning model which collects and combines predictions from multiple machine learning models and combines the output to make more accurate predictions than the individual models. \\
 \indent The individual decision trees are generally grown deep without pruning and will have high variance and low bias. The only parameters for Bagging decision trees are the number of sample and hence the number of trees. The number of trees are gradually increased run-by-run until accuracy became stable. The number of models can be very large and will not overfit the model.
 
 \subsection{Random Forest on Ensemble bagging trees}
-In Bagging decision trees, the predictions are highly correlated since the algorithms are greedy. Bagging works better if the predictions are uncorrelated or weakly correlated. To address this problem, Random Forest method is used. In a decision tree or CART, when choosing a split point, the learning algorithm looks at all options and choose one optimal split. The random forest model limits the number of choices to a random subset of features to search. Thus, an extra parameter (\textit{m}) is introduced here to specify how many features have to be searched at split point among all number of features(\textit{p}). Generally, the \textit{m} is defaulted to be square-root of \textit{p} in case of classification and \textit{p}/3 in case of regression. \\
+In Bagging decision trees, the predictions are highly correlated since the algorithms are greedy. Bagging works better if the predictions are uncorrelated or weakly correlated. To address this problem, Random Forest method\textsuperscript{\cite{randomForest}} is used. In a decision tree or CART, when choosing a split point, the learning algorithm looks at all options and choose one optimal split. The random forest model limits the number of choices to a random subset of features to search. Thus, an extra parameter (\textit{m}) is introduced here to specify how many features have to be searched at split point among all number of features(\textit{p}). Generally, the \textit{m} is defaulted to be square-root of \textit{p} in case of classification and \textit{p}/3 in case of regression. \\
 \indent Once the data samples are selected in multiple sub-spaces, some samples will be left without taking into any of the sub sample space. These are called Out-Of-Bag samples (OOB) and are used to calculate the validation accuracy. An error function is calculated at each split point to validate the performance of the learning model. For classification, Gini score is the most used error function. Thus, random forests can be used to efficiently construct the learning model even for higher dimensional space and for large data samples. 
+
+\subsection{Rotation Forest}
+Rotation Forest\textsuperscript{\cite{rotationForest}} is a variation of random forest model where Principle Component Analysis(PCA)\textsuperscript{\cite{pca}} is applied for each individual sub-sample space of the random forest model. This is a new and experimental model where the accuracy is proven to be better than random forest and bagging models for some benchmark models. Thus, this is used for predicting the bike share frequency even though theoretically almost all the features/components are important in impacting the bike share frequency.
 
 \section{Results}
 Evaluating all the models (mentioned in Section V) in Matlab and also in Classifier App gave the individual accuracy of the models as in Table \ref{resultsAllAccuracies}.
@@ -235,6 +239,8 @@ Ensemble subspace KNN & 60.8\\
 Classification Trees (using fitctree) & 77.6\\
 \hline 
 Ensemble TreeBagger & 79.8 \\
+\hline 
+Ensemble Rotation Forest & 1 \\
 \hline 
 Ensemble Bagged Trees & 80.3\\[1ex] 
  \hline
@@ -298,6 +304,9 @@ The TreeBagger is a class provided by the Math and Statistics module in Matlab t
 \label{tbrfnumtrees}
 \end{figure}
 
+\subsection{Rotation Forest}
+Rotation Forest is implemented on top of Random Forest implementation and the number of components for the PCA is the new parameter that is changed to calculate the accuracies. Figure \ref{rotationForestResults} shows the plot for the number of components selected and the accuracies of the learning models. For this, the size of sub sample size is fixed to be 20000 and the hyper parameter of the random forest model is set to 7.
+
 \section{Conclusion}
 We are fucked up as of now
 
@@ -320,5 +329,90 @@ We are fucked up as of now
     \bibitem{relatedworkmultiple}
     Jimmy Du, Rolland He, Zhivko Zhechev - \textit{Forecasting Bike Rental Demand}\\
     \url{http://cs229.stanford.edu/proj2014/Jimmy\%20Du,\%20Rolland\%20He,\%20Zhivko\%20Zhechev,\%20Forecasting\%20Bike\%20Rental\%20Demand.pdf}
+    \bibitem{rotationForest}
+    \textit{Rotation Forest: A New Classifier Ensemble Method} \\  
+    \url{http://dl.acm.org/citation.cfm?id=1159358}
+    
+    \bibitem{randomForest}
+    Leo Breiman and Adele Cutler - \textit{Random Forests}
+    \url{https://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm}
+    
+    \bibitem{bootstrapAggregation}
+    \textit{Bagging and Random Forest Ensemble Algorithms for Machine Learning} \\
+    \url{http://machinelearningmastery.com/bagging-and-random-forest-ensemble-algorithms-for-machine-learning/}
+    
+    \bibitem{KNN}
+    \textit{K-Nearest Neighbors for Machine Learning} \\
+    \url{http://machinelearningmastery.com/k-nearest-neighbors-for-machine-learning/}
+    
+    \bibitem{SVM}
+    \textit{Support Vector Machines for Binary Classification}\\
+    \url{https://www.mathworks.com/help/stats/support-vector-machines-for-binary-classification.html}
+    
+    \bibitem{libSVM}
+    \textit{LIBSVM -- A Library for Support Vector Machines} \\
+    \url{https://www.csie.ntu.edu.tw/~cjlin/libsvm/}
+    
+    \bibitem{SVR}
+    \textit{Understanding Support Vector Machine Regression}\\
+    \url{https://www.mathworks.com/help/stats/understanding-support-vector-machine-regression.html}
+    
+    \bibitem{lda}
+    \textit{Linear discriminant analysis}\\
+    \url{https://en.wikipedia.org/wiki/Linear_discriminant_analysis}
+    
+    \bibitem{ctree}
+    Wei-Yin Loh - \textit{Classification and regression trees}\\
+    \url{http://www.stat.wisc.edu/~loh/treeprogs/guide/wires11.pdf}
+    
+    \bibitem{BoostedTrees}
+    Carlos Guestrin - \textit{Decision Trees Boosting}\\
+    \url{http://www.cs.cmu.edu/~guestrin/Class/10701-S06/Slides/decisiontrees-boosting.pdf}
+    
+    \bibitem{BaggedTrees}
+    Amit Srinet \& Dave Snyder - \textit{Bagging and Boosting}\\
+    \url{https://www.cs.rit.edu/~rlaz/prec20092/slides/Bagging_and_Boosting.pdf}
+    
+    \bibitem{bikesharewiki}
+    \textit{Bicycle-sharing system}\\
+    \url{https://en.wikipedia.org/wiki/Bicycle-sharing_system}
+    
+    \bibitem{capitalbikeshare}
+    \textit{Capital Bike Share}\\
+    \url{http://www.capitalbikeshare.com/}
+    
+    \bibitem{classifier}
+    \textit{Classification Learner - Matlab App}\\
+    \url{https://www.mathworks.com/help/stats/classificationlearner-app.html}
+    
+    \bibitem{pca}
+    \textit{Principal Component Analysis}\\
+    \url{https://en.wikipedia.org/wiki/Principal_component_analysis}
+    
+    \bibitem{}
+    \textit{}\\
+    \url{}
+    
+    \bibitem{}
+    \textit{}\\
+    \url{}
+    
+    \bibitem{}
+    \textit{}\\
+    \url{}
+    
+    \bibitem{}
+    \textit{}\\
+    \url{}
+    
+    \bibitem{}
+    \textit{}\\
+    \url{}
+    
+    
+    
+    
+    
+    
 \end{thebibliography}
 \end{document}

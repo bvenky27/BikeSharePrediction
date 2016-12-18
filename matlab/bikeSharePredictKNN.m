@@ -1,3 +1,5 @@
+% Implement KNN
+
 load 'bikeShareData.mat'
 
 K_values = [1:15];

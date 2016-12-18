@@ -4,7 +4,7 @@ load 'bikeShareData.mat';
 
 m = 100; % number of sub-sample spaces that has to be created
 n = 20000; % size of individual sub-sample space
-p = 7; % parameter of random forest model
+p = 7; % parameter of random forest model - not used here
 
 train_all = [bikes_train labels_train];
 
@@ -34,3 +34,29 @@ end
 % Accuracy without Optimizing hyper parameters - 79.5%
 % Accuracy with Optimizing hyper parameters - 81.6%
 accuracy = 100*accuracy/size(labels_test, 1); 
+
+
+featureNames = cell(12, 1);
+featureNames{1} = 'Season';
+featureNames{2} = 'Year';
+featureNames{3} = 'Month';
+featureNames{4} = 'Day';
+featureNames{5} = 'Hour' ;
+featureNames{6} = 'DayOfWeek' ;
+featureNames{7} = 'humidity' ;
+featureNames{8} = 'windSpeed' ;
+featureNames{9} = 'cloudCover' ;
+featureNames{10} = 'temperature'; 
+featureNames{11} = 'Summary'; 
+featureNames{12} = 'Holiday';
+
+imp = predictorImportance(model);
+figure;
+bar(imp);
+title('Feature Importance');
+ylabel('Estimates');
+xlabel('Predictors');
+h = gca;
+h.XTickLabel = featureNames;
+h.XTickLabelRotation = 45;
+h.TickLabelInterpreter = 'none';

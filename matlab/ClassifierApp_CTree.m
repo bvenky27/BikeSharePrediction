@@ -1,3 +1,4 @@
+% Stub to run the auto-generated code from Classifier App for CTree
 load 'bikeShareData.mat'
 
 train_all = [bikes_train labels_train];

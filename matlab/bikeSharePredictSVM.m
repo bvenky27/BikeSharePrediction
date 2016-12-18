@@ -1,3 +1,6 @@
+% Since the fitcsvm is only for binary classification and we need multi
+% class classification, the libsvm module is used.
+
 load 'bikeShareData.mat'
 
 modelSVM = svmtrain(labels_train, bikes_train, ['-t 2 -c 100']);

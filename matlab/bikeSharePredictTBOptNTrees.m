@@ -1,5 +1,7 @@
 load 'bikeShareData.mat';
 
+% Plot accuracies for fixed random forest hyper parameter m = 7 and
+% changing number of trees from 1 to 40
 optNumPredict = 7;
 NTress_values = [1:40];
 accuraciesTB = zeros(size(NTress_values, 2), 1);

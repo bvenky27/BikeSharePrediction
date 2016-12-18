@@ -1,3 +1,4 @@
+% Code for fitting CTree without Ensemble learning.
 load 'bikeShareData.mat';
 % accuracy = 76%
 tree = fitctree(bikes_train, labels_train,'OptimizeHyperparameters','auto');

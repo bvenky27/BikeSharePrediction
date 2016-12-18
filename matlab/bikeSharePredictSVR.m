@@ -1,3 +1,4 @@
+% Code for Support Vector Regression
 load 'bikeShareData.mat'
 %for 20000 training data set accuracy = 40.0952
 % 40.12 for 3000

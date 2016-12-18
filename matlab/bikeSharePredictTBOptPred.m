@@ -1,5 +1,8 @@
 load 'bikeShareData.mat';
 
+% Plot the accuracies for number of trees being 10 and changing the hyper
+% parameter of the random forest model i.e., number of features to search
+% at every split point from 3 to 12.
 NTress_values = [10];
 sample_Values = [3:12];
 accuraciesTB = zeros(size(sample_Values, 2), 1);

@@ -1,6 +1,14 @@
+% Implemented TreeBagger for RANDOM FOREST MODEL and ensemble methods.
+% Variations are ran with changing the number of features to search at the
+% split point i.e., the hyper parameter of the random forest model to make
+% it similar to the functionality of the Bootstrap aggregation.
+
+% Will take almost half day to run
+% Very slow
+
 load 'bikeShareData.mat'
 
-NTress_values = [1:100];
+NTress_values = [1:200];
 accuraciesTB = zeros(size(NTress_values, 2), 1);
 for NT = 1:size(NTress_values, 2)
     B = TreeBagger(NTress_values(NT),bikes_train,labels_train, 'Method', 'classification');

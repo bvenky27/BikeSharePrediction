@@ -1,3 +1,7 @@
+% This file is used to combine all years data and to add some additional
+% parameters and also to change/classify some values and features
+
+% Collect all years' data
 combined2011 = dataExtract(2011);
 combined2012 = dataExtract(2012);
 combined2013 = dataExtract(2013);
@@ -5,11 +9,15 @@ combined2014 = dataExtract(2014);
 combined2015 = dataExtract(2015);
 combined2016 = dataExtract(2016);
 
+% Combine all data
 featureData = [combined2011; combined2012; combined2013; combined2014; combined2015; combined2016];
 
+% Seperate labels data from feature data
 all_labels = featureData(:, 7);
 all_labels = [all_labels ones(size(all_labels, 1), 1)];
 
+% Count the number of occurences of the bike rental frequencies in order to
+% divide the labels into classes
 [i,~,j]  = unique(all_labels(:, 1), 'rows');
 countStats = [i, accumarray(j, all_labels(:, 2), [], @sum)];
 
@@ -17,6 +25,7 @@ plot(countStats(:,1), countStats(:, 2)); % Can see the logarithmic distribution 
 
 all_labels = all_labels(:, 1);
 
+% Classify the labels
 all_labels(all_labels >= 1    & all_labels <= 40 )   = 1; % Can't see any bikes around
 all_labels(all_labels >  40   & all_labels <= 200 )  = 2; % Very few bikes
 all_labels(all_labels >  200  & all_labels <= 400 )  = 3; % Less busy
@@ -25,8 +34,10 @@ all_labels(all_labels >  600  & all_labels <= 800 )  = 5; % Busy
 all_labels(all_labels >  800  & all_labels <= 1100 ) = 6; % Very Busy
 all_labels(all_labels >  1100 & all_labels <= 2000 ) = 7; % Perfect time for biking for everyone
 
+% Combine the data
 featureData = [featureData(:, 1:6) all_labels(:, 1) featureData(:, 8:12)];
 
+% Construct the data to enter holiday information (0 or 1)
 holidays = zeros(size(featureData, 1), 1);
 holidays(featureData(:, 2) == 2011 & featureData(:, 3)==1 & featureData(:, 4)==17)=1;
 holidays(featureData(:, 2) == 2011 & featureData(:, 3)==2 & featureData(:, 4)==21)=1;
@@ -96,8 +107,10 @@ holidays(featureData(:, 2) == 2016 & featureData(:, 3)==5 & featureData(:, 4)==3
 
 featureData = [featureData holidays];
 
+% Shuffle the data
 idx=randperm(size(featureData, 1));
 
+% Split it into training and test - features and labels data
 bikes_train_all = featureData(idx(1:40000), :);
 bikes_test_all = featureData(idx(40001:46936), :);
 
@@ -107,7 +120,24 @@ bikes_train = [bikes_train_all(:, 1:6) bikes_train_all(:, 8:13)];
 labels_test = bikes_test_all(:, 7);
 bikes_test = [bikes_test_all(:, 1:6) bikes_test_all(:, 8:13)];
 
+% Mark the weekends also as holidays to increase accuracy
 bikes_train((bikes_train(:, 6) == 1 | bikes_train(:, 6) == 7), 12) = 1;
 bikes_test((bikes_test(:, 6) == 1 | bikes_test(:, 6) == 7), 12) = 1;
 
+% Save the mat file to use directly in other methods
 save('bikeShareData.mat', 'bikes_train', 'labels_train', 'bikes_test', 'labels_test');
+
+% Loading the final feature names into an array of cells for future use.
+featureNames = cell(12, 1);
+featureNames{1} = 'Season';
+featureNames{2} = 'Year';
+featureNames{3} = 'Month';
+featureNames{4} = 'Day';
+featureNames{5} = 'Hour' ;
+featureNames{6} = 'DayOfWeek' ;
+featureNames{7} = 'humidity' ;
+featureNames{8} = 'windSpeed' ;
+featureNames{9} = 'cloudCover' ;
+featureNames{10} = 'temperature'; 
+featureNames{11} = 'Summary'; 
+featureNames{12} = 'Holiday';

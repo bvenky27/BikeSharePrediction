@@ -38,31 +38,29 @@ bikeShareData.mat - entire data
 
 6) bikeSharePredictSVR.m: Simple Support Vector Regression implementation with no parameters for entire data. This is a classification problem, thus not so good accuracy for the regression.
 
-7) bikeSharePredictTreeBagger.m: The TreeBagger is a class for implementing the Bagging method or BootStrap Aggregating method. This file demomnstartes the simple usage of the TreeBagger for our data.
+7) bikeSharePredictTBRF.m: This is same as the Bagging but with Random Forest method.
 
-8) bikeSharePredictTBRF.m: This is same as the Bagging but with Random Forest method.
+8) bikeSharePredictOptNTrees.m: This is for running the TreeBagger for varying number of decision trees to get the optimal value.
 
-9) bikeSharePredictOptNTrees.m: This is for running the TreeBagger for varying number of decision trees to get the optimal value.
+9) bikeSharePredictOptPred.m: This is for running the TreeBagger for varying number of predictors.
 
-10) bikeSharePredictOptPred.m: This is for running the TreeBagger for varying number of predictors.
+10) trainClassifierCTree.m: This is auto-generated code for a function from Classifier app in Matlab.
 
-11) trainClassifierCTree.m: This is auto-generated code for a function from Classifier app in Matlab.
+11) ClassifierApp_CTree.m: This is stub code for trainClassifierCTree.
 
-12) ClassifierApp_CTree.m: This is stub code for trainClassifierCTree.
+12) trainClassifierBaggedTreesEnsemble.m: This is auto-generated code for a function from Classifier app in Matlab.
 
-13) trainClassifierBaggedTreesEnsemble.m: This is auto-generated code for a function from Classifier app in Matlab.
+13) ClassifierApp_EnsTB.m: This is stub code for trainClassifierBaggedTreesEnsemble.
 
-14) ClassifierApp_EnsTB.m: This is stub code for trainClassifierBaggedTreesEnsemble.
+14) RunEnsemble.m: This file runs the Classification tree using random forest model with ensemble method.
 
-15) RunEnsemble.m: This file runs the Classification tree using random forest model with ensemble method.
+15) RunEnsembleSplitCriterion.m: This is same as RunEnsemble but with Split criterion selected as 'deviance' as explained in the paper.
 
-16) RunEnsembleSplitCriterion.m: This is same as RunEnsemble but with Split criterion selected as 'deviance' as explained in the paper.
+16) RunEnsembleRotationForest.m: This matlab script runs the classification tree in rotation forest model using ensemble method.
 
-17) RunEnsembleRotationForest.m: This matlab script runs the classification tree in rotation forest model using ensemble method.
+17) RunEnsembleRotationForestWithSplitCriterion.m: This is same as running ensemble with rotation forest but with the Split criterion selected as 'deviance' as explained in the paper.
 
-18) RunEnsembleRotationForestWithSplitCriterion.m: This is same as running ensemble with rotation forest but with the Split criterion selected as 'deviance' as explained in the paper.
-
-19) RunEnsembleRotationForestAll.m: THis file runs the ensemble rotation forest for all the varying PCA number of components and plot the graph for number of components in PCA vs Accuracy. 
+18) RunEnsembleRotationForestAll.m: THis file runs the ensemble rotation forest for all the varying PCA number of components and plot the graph for number of components in PCA vs Accuracy. 
 
 ## Slides: 
 The paper, slides and the tex file used to create the pdf is also included.

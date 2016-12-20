@@ -7,8 +7,8 @@ p = 7; % parameter of random forest model - not used here
 
 % Default the value to 9 for faster execution, this might take 3 hours when
 % run completely
-P_Values = [3:12];
-Accuracies = zeros(size(P_Values, 2), 1);
+%P_Values = [3:12];
+%Accuracies = zeros(size(P_Values, 2), 1);
 %for p = 1:size(P_Values, 2)
     train_all = [bikes_train labels_train];
     Coeffs = cell(m, 1);
@@ -17,10 +17,10 @@ Accuracies = zeros(size(P_Values, 2), 1);
         n = randi([15000 40000], 1, 1); % size of individual sub-sample space
         subspace_train = datasample(train_all, n);
         labels_train_pca = subspace_train(:, 13);
-        coeff = pca(subspace_train(:, 1:12), 'NumComponents', 12);
+        coeff = pca(subspace_train(:, 1:12));
         subspace_train = subspace_train(:, 1:12) * coeff;
         Coeffs{k} = coeff;
-        model = fitctree(subspace_train, labels_train_pca);
+        model = fitctree(subspace_train, labels_train_pca, 'SplitCriterion', 'deviance');
         % Comment above line and Uncomment below to run fitctree with optimized
         % parameters - takes approximately 2 hours to run and produces accuracy
         % of 81.6

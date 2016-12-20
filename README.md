@@ -1,12 +1,14 @@
 # BikeSharePrediction
 Predict the bnumber of bikes that will be booked using bike-share data
 
+
 CMSC 678 - Machine Learning - Fall 2016 - Final Project
 
 
 ## Student Names:
 
 Phanindra Kumar Kannaji (pkanna1)
+
 Venkata Rami Reddy Bujunuru (bo26494)
 
 
@@ -15,7 +17,9 @@ The project files consists of following parts:
 1. data: The bike Share data and the weather data individual files per year and the final generated .mat file with the entire combined data.
 
 bike_\<year>.csv
+
 weather_\<year>.csv
+
 bikeShareData.mat - entire data
 
 

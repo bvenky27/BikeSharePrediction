@@ -5,20 +5,15 @@ load 'bikeShareData.mat';
 m = 100; % number of sub-sample spaces that has to be created
 %n = 20000; % size of individual sub-sample space
 p = 7; % parameter of random forest model - not used here
-
 train_all = [bikes_train labels_train];
 Coeffs = cell(m, 1);
 models = cell(m, 1);
 for k = 1:m
     n = randi([15000 40000], 1, 1); % size of individual sub-sample space
     subspace_train = datasample(train_all, n);
-    labels_test_pca = subspace_train(:, 13);
+    sub_labels_train = subspace_train(:, 13);
     subspace_train = subspace_train(:, 1:12);
-    model = fitctree(subspace_train, labels_test_pca, 'SplitCriterion', 'deviance');
-    % Comment above line and Uncomment below to run fitctree with optimized
-    % parameters - takes approximately 2 hours to run and produces accuracy
-    % of 81.6
-    %model = fitctree(subspace_train(:, 1:12), subspace_train(:, 13), 'OptimizeHyperParameters', 'auto');
+    model = fitctree(subspace_train, sub_labels_train);
     models{k} = model;
 end
 accuracy = 0;

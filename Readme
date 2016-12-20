@@ -37,11 +37,13 @@ Matlab Code:
 *) ClassifierApp_CTree.m: This is stub code for trainClassifierCTree.
 *) trainClassifierBaggedTreesEnsemble.m: This is auto-generated code for a function from Classifier app in Matlab.
 *) ClassifierApp_Ensemble.m: This is stub code for trainClassifierBaggedTreesEnsemble.
-
-Inside EnsembleBootstrap:
-
 *) RunEnsemble.m: This file runs the Classification tree using random forest model with ensemble method.
+*) RunEnsembleSplitCriterion.m: This is same as RunEnsemble but with Split criterion selected as 'deviance' as explained in the paper.
 *) RunEnsembleRotationForest.m: This matlab script runs the classification tree in rotation forest model using ensemble method.
+*) RunEnsembleRotationForestWithSplitCriterion.m: This is same as running ensemble with rotation forest but with the Split criterion selected as 'deviance' as explained in the paper.
+
+*) RunEnsembleRotationForestAll.m: THis file runs the ensemble rotation forest for all the varying PCA number of components and plot the graph for number of components in PCA vs Accuracy.
+*) 
 
 In Slides: 
 The paper, slides and the tex file used to create the pdf is also included.

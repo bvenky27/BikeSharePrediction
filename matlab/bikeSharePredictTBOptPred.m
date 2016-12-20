@@ -21,3 +21,4 @@ for samp = 1:size(sample_Values, 2)
     end
 end
 plot(sample_Values, accuraciesTB);
+title('TreeBagger - Number of Predictors vs Accuracy');

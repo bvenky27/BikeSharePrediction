@@ -18,4 +18,5 @@ for NT = 1:size(NTress_values, 2)
     accuraciesTB(NT) = 100*accuracyTB/size(labels_test, 1);
 end
 plot(NTress_values, accuraciesTB);
+title('TreeBagger - NTrees vs Accuracies');
 % Stabilized at NTrees = 15

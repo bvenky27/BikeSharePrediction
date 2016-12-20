@@ -1,0 +1,17 @@
+dataExtract
+bikeSharePredictCTree
+bikeSharePredictKNN
+bikeSharePredictSVM
+bikeSharePredictTBRF
+bikeSharePredictTreeBagger
+ClassifierApp_CTree
+ClassifierApp_EnsTB
+RunEnsemble
+RunEnsembleSplitCriterion
+RunEnsembleRotationForest
+RunEnsembleRotationForestWithSplitCriterion
+
+bikeSharePredictSVR
+bikeSharePredictTBOptNTrees
+bikeSharePredictTBOptPred
+RunEnsembleRotationForestAll

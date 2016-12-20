@@ -31,7 +31,7 @@ end
 
 % Accuracy without Optimizing hyper parameters - 79.5%
 % Accuracy with Optimizing hyper parameters - 81.6%
-accuracy = 100*accuracy/size(labels_test, 1); 
+accuracyRandForest = 100*accuracy/size(labels_test, 1); 
 
 
 featureNames = cell(12, 1);

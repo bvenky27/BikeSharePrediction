@@ -15,4 +15,4 @@ for t = 1:size(labels_test, 1)
     end
 end
 
-accuracy = 100*accuracy/size(labels_test, 1);
+accuracyAppEnsTB = 100*accuracy/size(labels_test, 1);

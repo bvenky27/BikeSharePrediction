@@ -46,3 +46,4 @@ for p = 1:size(P_Values, 2)
 end
 
 plot(P_Values, Accuracies);
+title('Rotation Forest - PCA Number of components vs Accuracy');

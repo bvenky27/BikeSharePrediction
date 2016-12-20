@@ -14,7 +14,7 @@ for k = 1:m
     subspace_train = datasample(train_all, n);
     labels_test_pca = subspace_train(:, 13);
     subspace_train = subspace_train(:, 1:12);
-    model = fitctree(subspace_train, labels_test_pca);
+    model = fitctree(subspace_train, labels_test_pca, 'SplitCriterion', 'deviance');
     % Comment above line and Uncomment below to run fitctree with optimized
     % parameters - takes approximately 2 hours to run and produces accuracy
     % of 81.6

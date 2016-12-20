@@ -52,7 +52,7 @@ bikeShareData.mat - entire data
 
 13) trainClassifierBaggedTreesEnsemble.m: This is auto-generated code for a function from Classifier app in Matlab.
 
-14) ClassifierApp_Ensemble.m: This is stub code for trainClassifierBaggedTreesEnsemble.
+14) ClassifierApp_EnsTB.m: This is stub code for trainClassifierBaggedTreesEnsemble.
 
 15) RunEnsemble.m: This file runs the Classification tree using random forest model with ensemble method.
 
